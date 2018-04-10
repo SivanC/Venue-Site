@@ -1,81 +1,140 @@
-<style>
-    form {
-      /* Just to center the form on the page */
-      margin: 0 auto;
-      width: 400px;
-      /* To see the outline of the form */
-      padding: 1em;
-      border: 1px solid #CCC;
-      border-radius: 1em;
-    }
 
-    form div + div {
-      margin-top: 1em;
-    }
+<html>
+    <head profile="http://www.w3.org/2005/10/profile">
+    <meta charset="utf-8">
+    <title>Spring Venue 2018 Sign Up</title>
+    <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+    <link rel="icon"
+    type="image/png"
+    href="https://www.pythonanywhere.com/user/venuesignup/files/home/venuesignup/favicon.ico">
+    <style>
 
-    label {
-      /* To make sure that all labels have the same size and are properly aligned */
-      display: inline-block;
-      width: 1000px;
-      text-align: left;
-    }
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
 
-    input, textarea {
-      /* To make sure that all text fields have the same font settings
-         By default, textareas have a monospace font */
-      font: 1em sans-serif;
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #cccccc;
+            width: 100%;
+        }
 
-      /* To give the same size to all text fields */
-      width: 300px;
-      box-sizing: border-box;
+        li, .navbar form {
+            display: inline;
+        }
 
-      /* To harmonize the look & feel of text field border */
-      border: 1px solid #999;
+        .navbar button {
+            padding: 15px 32px;
+            font-size: 16px;
+            display: inline;
+            float: left;
+            border: none;
+            background-color: #cccccc;
+            font-family: 'Tajawal', Helvetica, sans-serif;
+        }
 
-      resize: none;
-    }
+        .navbar button:hover {
+            background-color: #bfbfbf;
+        }
 
-    input:focus, textarea:focus {
-      /* To give a little highlight on active elements */
-      border-color: #000;
-    }
+        input[type=text], textarea {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            font-size: 16px;
+            max-width: 50%;
+            font-family: 'Tajawal', Helvetica, sans-serif;
+        }
 
-    textarea {
-      /* To properly align multiline text fields with their labels */
-      vertical-align: top;
+        input[type=text]:focus, textarea:focus {
+            border: 3px solid #555;
+        }
 
-      /* To give enough room to type some text */
-      height: 5em;
-    }
+        form {
+            font-family: 'Tajawal', Helvetica, sans-serif;
+        }
 
-    .button {
-      /* To position the buttons to the same position of the text fields */
-      padding-left: 90px; /* same size as the label elements */
-    }
+        textarea {
+            height: 150px;
+            resize: none;
+        }
 
-    button {
-      /* This extra margin represent roughly the same space as the space
-         between the labels and their text fields */
-      margin-left: .5em;
-    }
-  </style>
-  <div>
-    <h2>Perform At Venue</h2>
-    <form action='{{ url_for('display') }}' method='post'>
-      <div>
-        <label for='name'>Name of Student/Group/Class:  </label>
-        <input type='text' id='name' name='groupName'/>
-      </div>
-      <div>
-        <label for='perfName'>Name of Performance:  </label>
-        <input type='text' id='perfName' name='performanceName'/>
-      </div>
-      <div>
-        <label for='note'>Additional Notes:  </label>
-        <textarea id='note' cols='20' name='extraNotes'></textarea>
-      </div>
-      <div class="button">
-        <button type="submit">Sign Up</button>
-      </div>
-    </form>
-  </div>
+        input, label, textarea {
+            display: block;
+        }
+
+        .form div {
+            position: relative;
+            top: 300px;
+            left: 25%;
+        }
+
+        .form button {
+            padding: 15px 32px;
+            font-size: 16px;
+            display: inline;
+            border: none;
+            background-color: #cccccc;
+            font-family: 'Tajawal', Helvetica, sans-serif;
+        }
+
+        label {
+            font-size: 32px;
+        }
+
+        h1 {
+            margin: 0;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            font-family: 'Tajawal', Helvetica, sans-serif;
+            font-size: 56px;
+        }
+
+    </style>
+    </head>
+
+    <body>
+        <ul>
+            <div class='navbar'>
+                <nav>
+                    <ul>
+                        <li><form action='{{ url_for('home') }}' method='post'> <button type='submit'>Home</button> </form></li>
+                        <li><form action='{{ url_for('performances') }}' method='get'> <button type='submit'>View Performances</button> </form></li>
+                        <li><form action='{{ url_for('signup') }}' method='get'><button>Sign Up</button></form></li>
+                    </ul>
+                </nav>
+            </div>
+        </ul>
+
+        <h1>Spring Venue 2018 Sign Up</h1>
+
+        <div class='form' align='justify'>
+            <form action='{{ url_for('performances') }}' method='post'>
+              <div>
+                <label for='name'>Name of Student/Group/Class:  </label>
+                <input type='text' id='name' name='groupName' autocomplete='off'/>
+              </div>
+              <div>
+                <label for='perfName'>Name of Performance:  </label>
+                <input type='text' id='perfName' name='performanceName' autocomplete='off'/>
+              </div>
+              <div>
+                <label for='note'>Additional Notes:  </label>
+                <textarea id='note' cols='20' name='extraNotes'></textarea>
+              </div>
+              <div class="button">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+        </div>
+    </body>
+</html>

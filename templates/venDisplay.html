@@ -1,62 +1,146 @@
 <!DOCTYPE html>
     <html>
-    <head>
+    <head profile="http://www.w3.org/2005/10/profile">
       <meta charset="utf-8">
-      <title>Data</title>
+      <title>Performance List</title>
+        <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+        <link rel="icon"
+        type="image/png"
+        href="https://www.pythonanywhere.com/user/venuesignup/files/home/venuesignup/favicon.ico">
+        <style>
+    		html {
+    		  font-family: 'Tajawal', Helvetica, sans-serif;
+    		}
+
+    		body {
+    			background-size: auto;
+    		}
+
+    		ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: #cccccc;
+                width: 100%;
+                z-index: 2;
+            }
+
+            li, .navbar form {
+                display: inline;
+            }
+
+            .navbar button {
+                padding: 15px 32px;
+                font-size: 16px;
+                display: inline;
+                float: left;
+                border: none;
+                background-color: #cccccc;
+                font-family: 'Tajawal', Helvetica, sans-serif;
+            }
+
+            .navbar button:hover {
+                background-color: #bfbfbf;
+            }
+
+            .tbl {
+                margin: 0;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-25%, -20%);
+                width: 100%;
+            }
+
+    		table {
+          	    border-collapse: collapse;
+          	    border: 2px solid rgb(200,200,200);
+        	    letter-spacing: 1px;
+        	    font-size: 1.5rem;
+                position: absolute;
+                float: left;
+                table-layout: fixed;
+                width: 50%;
+    		}
+
+    		td, th {
+    		  border: 1px solid rgb(190,190,190);
+    		  padding: 10px 20px;
+    		}
+
+    		th {
+    		  background-color: rgb(235,235,235);
+    		}
+
+    		td {
+    		  text-align: center;
+    		}
+
+    		tr:nth-child(even) td {
+    		  background-color: rgb(250,250,250);
+    		}
+
+    		tr:nth-child(odd) td {
+    		  background-color: rgb(245,245,245);
+    		}
+
+    		caption {
+    		  padding: 10px;
+    		}
+
+    		h1 {
+                margin: 0;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -20%);
+                font-family: 'Tajawal', Helvetica, sans-serif;
+                font-size: 56px;
+            }
+
+            caption {
+                font-size: 56px;
+            }
+
+            tr:hover {
+                font-family: 'Tajawal', Helvetica, sans-serif;
+                background-color: #f5f5f5;
+            }
+
+    	</style>
     </head>
-    <style>
-		html {
-		  font-family: serif;
-		}
-
-		body {
-			background-size: auto;
-		}
-
-		table {
-		  border-collapse: collapse;
-		  border: 2px solid rgb(200,200,200);
-		  letter-spacing: 1px;
-		  font-size: 1.5rem;
-		}
-
-		td, th {
-		  border: 1px solid rgb(190,190,190);
-		  padding: 10px 20px;
-		}
-
-		th {
-		  background-color: rgb(235,235,235);
-		}
-
-		td {
-		  text-align: center;
-		}
-
-		tr:nth-child(even) td {
-		  background-color: rgb(250,250,250);
-		}
-
-		tr:nth-child(odd) td {
-		  background-color: rgb(245,245,245);
-		}
-
-		caption {
-		  padding: 10px;
-		}
-	</style>
     <body>
-      <table>
-        <tr>
-          <th>Name of Group</th>
-          <th>Name of Performance</th>
-          <th>Additional Info</th>
-	    </tr>
-	    <tr>
-      	  <td>{{groupName}}</td>
-      	  <td>{{performanceName}}</td>
-          <td>{{extraNotes}}</td>
-        </tr>
-	  </table>
+      <ul>
+            <div class='navbar'>
+                <nav>
+                    <ul>
+                        <li><form action='{{ url_for('home') }}' method='post'> <button type='submit'>Home</button> </form></li>
+                        <li><form action='{{ url_for('performances') }}' method='get'> <button type='submit'>View Performances</button> </form></li>
+                        <li><form action='{{ url_for('signup') }}' method='get'><button>Sign Up</button></form></li>
+                    </ul>
+                </nav>
+            </div>
+      </ul>
+
+      <div class='tbl'>
+          <table>
+            <caption>Spring Venue 2018 Roster</caption>
+            <tr>
+              <th>Name of Group</th>
+              <th>Name of Performance</th>
+              <th>Additional Info</th>
+    	    </tr>
+    	    {% for sub in subList %}
+    	        <tr>
+    	            <td>{{sub.groupName}}</td>
+    	            <td>{{sub.perfName}}</td>
+    	            <td>{{sub.extraNotes}}</td>
+    	        </tr>
+    	    {% endfor %}
+    	  </table>
+      </div>
     </body>
   </html>

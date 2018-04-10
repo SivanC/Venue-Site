@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Delete a Performance</title>
+    </head>
+    <body>
+        <form action='{{ url_for('delete') }}' method='post'>
+            <div>
+                <label for='delName'>Name of Student/Group/Class to Delete:  </label>
+                <input type='text' id='delName' name='deleteName'/>
+            </div>
+        </form>
+        <form action='{{ url_for('home') }}' method='post'>
+            <button type='submit'>Home</button>
+        </form>
+    </body>

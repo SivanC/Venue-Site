@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+    <html>
+    <head profile="http://www.w3.org/2005/10/profile">
+      <meta charset="utf-8">
+      <title>Spring Venue 2018 Home Page</title>
+      <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+      <link rel="icon"
+      type="image/png"
+      href="https://www.pythonanywhere.com/user/venuesignup/files/home/venuesignup/favicon.ico">
+      <style>
+          html, body {
+            max-width: 100%;
+            max-height: 100%;
+            overflow-x: hidden;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #cccccc;
+            width: 100%;
+        }
+
+        li, .navbar form {
+            display: inline;
+        }
+
+        .navbar button {
+            padding: 15px 32px;
+            font-size: 16px;
+            display: inline;
+            float: left;
+            border: none;
+            background-color: #cccccc;
+            font-family: 'Tajawal', Helvetica, sans-serif;
+        }
+
+        .navbar button:hover {
+            background-color: #bfbfbf;
+        }
+
+        h1 {
+            margin: 0;
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+            font-family: 'Tajawal', Helvetica, sans-serif;
+            font-size: 56px;
+        }
+
+      </style>
+    </head>
+    <body>
+        <ul>
+            <div class='navbar'>
+                <nav>
+                    <ul>
+                        <li><form action='{{ url_for('home') }}' method='post'> <button type='submit'>Home</button> </form></li>
+                        <li><form action='{{ url_for('performances') }}' method='get'> <button type='submit'>View Performances</button> </form></li>
+                        <li><form action='{{ url_for('signup') }}' method='get'><button>Sign Up</button></form></li>
+                    </ul>
+                </nav>
+            </div>
+        </ul>
+
+        <h1>Spring Venue 2018</h1>
+
+    </body>
